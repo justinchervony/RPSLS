@@ -3,12 +3,13 @@ import time
 class RunGame:
     def __init__(self):
         pass
-    def GameStart():
+    def GameStart(self):
         print("Welcome to Rock Paper Scissors Lizard Spock")
         print("")
         # time.sleep(1)
+        self.GameRules()
 
-    def GameRules():
+    def GameRules(self):
         print("Here are the rules:")
         # time.sleep(1)
         print("Each match will be a 'best-of-three' series.")
@@ -37,12 +38,26 @@ class RunGame:
         print("Rock crushes Scissors")
         # time.sleep(2)
         print("")
+        self.GameParticipants()
 
-    def GameParticipants():
-        print("How many human players are there? Type 1 or 2 (Type 3 for an AI only match). ")
+    def GameParticipants(self):
+        valid_response = False
+        while valid_response == False:
+            user_input = input("How many human players are there? Type 1 or 2 (Type 3 for an AI only match). ")
+            if user_input == "1":
+                valid_response = True
+            elif user_input == "2":
+                valid_response = True
+            elif user_input == "3":
+                valid_response = True
+            else:
+                print("Please enter 1, 2, or 3.")
+
         print("")
+        self.GameRound()
 
-    def GameRound():
+    def GameRound(self):
+        valid_response = False
         print("Type 0 for Rock")
         # time.sleep(1)
         print("Type 1 for Paper")
@@ -53,10 +68,21 @@ class RunGame:
         # time.sleep(1)
         print("Type 4 for Spock")
         # time.sleep(1)
-        print("Enter you gesture choice: ")
         print("")
+        
+        while valid_response == False:
+            try:
+                user_input = int(input("Enter your gesture choice: "))
+                if user_input < 0 or user_input > 4:
+                    print("Please enter a valid gesture number.")
+                else:
+                    valid_response = True
+            except:
+                print("Please enter a valid gesture number.")
+            print("")
+        self.GameResults()
     
-    def GameResults():
+    def GameResults(self):
         print("Player 1 uses x!")
         # time.sleep(1)
         print("Player 2 uses y!")
