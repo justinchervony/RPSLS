@@ -45,6 +45,7 @@ class RunGame:
         while valid_response == False:
             user_input = input("How many human players are there? Type 1 or 2 (Type 3 for an AI only match). ")
             if user_input == "1":
+                player1 = 
                 valid_response = True
             elif user_input == "2":
                 valid_response = True
@@ -71,19 +72,18 @@ class RunGame:
         print("")
         
         while valid_response == False:
-            try:
-                user_input = int(input("Enter your gesture choice: "))
-                if user_input < 0 or user_input > 4:
-                    print("Please enter a valid gesture number.")
-                else:
-                    valid_response = True
-            except:
+            user_input = input("Enter your gesture choice: ")
+            if user_input == "0" or user_input == "1" or user_input == "2" or user_input == "3" or user_input == "4":
+                valid_response = True
+                self.user_gesture_choice = int(user_input)
+                
+            else:
                 print("Please enter a valid gesture number.")
             print("")
         self.GameResults()
     
     def GameResults(self):
-        print("Player 1 uses x!")
+        print("Player 1 uses {self.player_choice}!")
         # time.sleep(1)
         print("Player 2 uses y!")
         # time.sleep(1)
