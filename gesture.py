@@ -12,5 +12,5 @@ class Gesture:
             self.gesture_name = "Scissors"
         elif self.gesture_selection == 3:
             self.gesture_name = "Lizard"
-        else:
+        elif self.gesture_selection == 4: #I know I could use else here but logically this isn't a "catch-all" so I'm thinking an elif would be more appopriate.
             self.gesture_name = "Spock"

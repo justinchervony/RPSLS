@@ -1,13 +1,22 @@
 import time
+from computer import ComputerPlayer
+from gesture import Gesture
+from human import HumanPlayer
 
 class RunGame:
     def __init__(self):
+        self.player1 = None
+        self.player2 = None
         pass
+
     def GameStart(self):
         print("Welcome to Rock Paper Scissors Lizard Spock")
         print("")
         # time.sleep(1)
         self.GameRules()
+        self.GameParticipants()
+        self.GameRound()
+        self.GameResults()
 
     def GameRules(self):
         print("Here are the rules:")
@@ -38,24 +47,28 @@ class RunGame:
         print("Rock crushes Scissors")
         # time.sleep(2)
         print("")
-        self.GameParticipants()
+        pass
 
     def GameParticipants(self):
         valid_response = False
         while valid_response == False:
             user_input = input("How many human players are there? Type 1 or 2 (Type 3 for an AI only match). ")
             if user_input == "1":
-                player1 = 
+                self.player1 = HumanPlayer("Player 1 ")
+                self.player2 = ComputerPlayer("Player 2 ")
                 valid_response = True
             elif user_input == "2":
+                self.player1 = HumanPlayer("Player 1 ")
+                self.player2 = HumanPlayer("Player 2 ")
                 valid_response = True
             elif user_input == "3":
+                self.player1 = ComputerPlayer("Player 1 ")
+                self.player2 = ComputerPlayer("Player 2 ")
                 valid_response = True
             else:
                 print("Please enter 1, 2, or 3.")
-
         print("")
-        self.GameRound()
+        pass
 
     def GameRound(self):
         valid_response = False
@@ -80,14 +93,14 @@ class RunGame:
             else:
                 print("Please enter a valid gesture number.")
             print("")
-        self.GameResults()
+        pass
     
     def GameResults(self):
         print("Player 1 uses {self.player_choice}!")
         # time.sleep(1)
-        print("Player 2 uses y!")
+        print("Player 2 uses {self.player2_choice}!")
         # time.sleep(1)
-        print("x is before y")
+        print("x beats y")
         # time.sleep(1)
         print("Player 1 wins!")
         # time.sleep(1)
