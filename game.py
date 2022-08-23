@@ -10,15 +10,16 @@ class RunGame:
         pass
 
     def GameStart(self):
-        print("Welcome to Rock Paper Scissors Lizard Spock")
-        print("")
-        # time.sleep(1)
-        self.GameRules()
-        self.GameParticipants()
-        while self.player1.score < 2 or self.player2.score < 2:
-            self.GameRound()
-            self.GameResults()
-        self.GameFinish()
+        while self.user_input == "y":
+            print("Welcome to Rock Paper Scissors Lizard Spock")
+            print("")
+            # time.sleep(1)
+            self.GameRules()
+            self.GameParticipants()
+            while self.player1.score < 2 or self.player2.score < 2:
+                self.GameRound()
+                self.GameResults()
+            self.GameFinish()
 
     def GameRules(self):
         print("Here are the rules:")
@@ -105,8 +106,13 @@ class RunGame:
         else:
             print("Player 2 is the match winner!")
             # time.sleep(1)
-        user_input = input("Would you like to play again? (y/n) ")
-        if user_input == "y":
-            
+        user_validation = False
+        self.user_input = input("Would you like to play again? (y/n) ")
+        if self.user_input == "y" or self.user_input == "n":
+            user_validation = True
+            pass
+        else:
+            print("Please type 'y' or 'n'.")
+
 
         
