@@ -15,8 +15,10 @@ class RunGame:
         # time.sleep(1)
         self.GameRules()
         self.GameParticipants()
-        self.GameRound()
-        self.GameResults()
+        while self.player1.score < 2 or self.player2.score < 2:
+            self.GameRound()
+            self.GameResults()
+        self.GameFinish()
 
     def GameRules(self):
         print("Here are the rules:")
@@ -71,26 +73,40 @@ class RunGame:
         pass
 
     def GameRound(self):
-        self.player1.ChooseGesture
-        self.player2.ChooseGesture
+        self.player1.ChooseGesture()
+        self.player2.ChooseGesture()
         self.ComparedGestures = GestureResults(self.player1.chosen_gesture, self.player2.chosen_gesture)
-        player_victor = self.ComparedGestures.GestureResults()
+        self.player_victor = self.ComparedGestures.GestureResults()
     
     def GameResults(self):
-        print(f"Player 1 uses {self.player1.gestures[self.chosen_gesture]}!")
+        print(f"Player 1 uses {self.player1.chosen_gesture}")
         # time.sleep(1)
-        print(f"Player 2 uses {self.player2_gestures[self.chosen_gesture]}!")
+        print(f"Player 2 uses {self.player2.chosen_gesture}")
         # time.sleep(1)
-        if player_victor == "Player 1":
-            print(f"{self.player1.gestures[self.chosen_gesture]} beats {self.player2_gestures[self.chosen_gesture]}")
+        if self.player_victor == "Player 1":
+            print(f"{self.player1.chosen_gesture} beats {self.player2.chosen_gesture}!")
             # time.sleep(1)
+            self.player1.score += 1
             print("Player 1 wins!")
-        elif player_victor == "Player 2":
-            print(f"{self.player2.gestures[self.chosen_gesture]} beats {self.player1_gestures[self.chosen_gesture]}")
+        elif self.player_victor == "Player 2":
+            print(f"{self.player2.chosen_gesture} beats {self.player1.chosen_gesture}!")
             # time.sleep(1)
+            self.player2.score += 1
             print("Player 2 wins!")
         else:
             print("It's a tie!")
         # time.sleep(1)
-        
         print("")
+
+    def GameFinish(self):
+        if self.player1.score == 2:
+            print("Player 1 is the match winner!")
+            # time.sleep(1)
+        else:
+            print("Player 2 is the match winner!")
+            # time.sleep(1)
+        user_input = input("Would you like to play again? (y/n) ")
+        if user_input == "y":
+            
+
+        

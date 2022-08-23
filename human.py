@@ -5,7 +5,7 @@ class HumanPlayer(Player):
         super().__init__(name)
         pass
 
-    def ChooseGesture(self, user_choice):
+    def ChooseGesture(self):
         valid_response = False
         print("Type 0 for Rock")
         # time.sleep(1)
@@ -23,7 +23,8 @@ class HumanPlayer(Player):
             user_input = input("Enter your gesture choice: ")
             if user_input == "0" or user_input == "1" or user_input == "2" or user_input == "3" or user_input == "4":
                 valid_response = True
-                self.chosen_gesture = user_input
+                user_input = int(user_input)
+                self.chosen_gesture = self.gestures[user_input]
             else:
                 print("Please enter a valid gesture number.")
             print("")
