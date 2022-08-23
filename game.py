@@ -1,6 +1,6 @@
 import time
 from computer import ComputerPlayer
-from gesture import Gesture
+from gesture import GestureResults
 from human import HumanPlayer
 
 class RunGame:
@@ -71,37 +71,26 @@ class RunGame:
         pass
 
     def GameRound(self):
-        valid_response = False
-        print("Type 0 for Rock")
-        # time.sleep(1)
-        print("Type 1 for Paper")
-        # time.sleep(1)
-        print("Type 2 for Scissors")
-        # time.sleep(1)
-        print("Type 3 for Lizard")
-        # time.sleep(1)
-        print("Type 4 for Spock")
-        # time.sleep(1)
-        print("")
-        
-        while valid_response == False:
-            user_input = input("Enter your gesture choice: ")
-            if user_input == "0" or user_input == "1" or user_input == "2" or user_input == "3" or user_input == "4":
-                valid_response = True
-                self.user_gesture_choice = int(user_input)
-                
-            else:
-                print("Please enter a valid gesture number.")
-            print("")
-        pass
+        self.player1.ChooseGesture
+        self.player2.ChooseGesture
+        self.ComparedGestures = GestureResults(self.player1.chosen_gesture, self.player2.chosen_gesture)
+        player_victor = self.ComparedGestures.GestureResults()
     
     def GameResults(self):
-        print("Player 1 uses {self.player_choice}!")
+        print(f"Player 1 uses {self.player1.gestures[self.chosen_gesture]}!")
         # time.sleep(1)
-        print("Player 2 uses {self.player2_choice}!")
+        print(f"Player 2 uses {self.player2_gestures[self.chosen_gesture]}!")
         # time.sleep(1)
-        print("x beats y")
+        if player_victor == "Player 1":
+            print(f"{self.player1.gestures[self.chosen_gesture]} beats {self.player2_gestures[self.chosen_gesture]}")
+            # time.sleep(1)
+            print("Player 1 wins!")
+        elif player_victor == "Player 2":
+            print(f"{self.player2.gestures[self.chosen_gesture]} beats {self.player1_gestures[self.chosen_gesture]}")
+            # time.sleep(1)
+            print("Player 2 wins!")
+        else:
+            print("It's a tie!")
         # time.sleep(1)
-        print("Player 1 wins!")
-        # time.sleep(1)
+        
         print("")
