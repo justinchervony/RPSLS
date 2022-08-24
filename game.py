@@ -7,6 +7,7 @@ class RunGame:
     def __init__(self):
         self.player1 = None
         self.player2 = None
+        self.user_input = "y"
         pass
 
     def GameStart(self):
@@ -16,7 +17,7 @@ class RunGame:
             # time.sleep(1)
             self.GameRules()
             self.GameParticipants()
-            while self.player1.score < 2 or self.player2.score < 2:
+            while self.player1.score < 2 and self.player2.score < 2:
                 self.GameRound()
                 self.GameResults()
             self.GameFinish()
